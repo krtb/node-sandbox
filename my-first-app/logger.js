@@ -1,4 +1,4 @@
-// not a real site
+var x =;
 var url = 'https://mylogger.io/log'
 
 function log(message) {
@@ -11,3 +11,6 @@ function log(message) {
 module.exports= log;
 // can also change the name of the variable that we want to export outside as well
 // module.export.endPoint = url;
+
+
+//node doesn't execute this code directly, wraps it inside of a function
