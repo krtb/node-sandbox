@@ -7,3 +7,8 @@
   * first assumes a required package is a `core node module`
   * then it assumes it's a file ora folder
   * finally it looks in `node_modules` folder 
+
+## CLI Commands
+* `npm list`
+* `npm list --depth=0`
+  * to see only dependencies of your app
