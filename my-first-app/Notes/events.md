@@ -17,3 +17,10 @@
 
 ## listener
 * a listener is a function that will be called when that event is raised
+
+## Recap
+
+* if you want to raise events to signal that something has happened, you need to create a class
+*  the class would extend `EventEmitter`
+*  that class would have all functionality, and can add additional functionality
+*  when you want to raise an event, `this.emit`, references the class you created
