@@ -23,3 +23,9 @@
 * `npm outdated`
   * `npm update` only works for minor and patch releases
 * `npm-check-updates`
+  * `ncu` command
+
+## jshint
+* npm i jshint --save-dev
+  * add flag to specify that this is a  development dependency
+  * tells node that this should not go into a PROD environment
