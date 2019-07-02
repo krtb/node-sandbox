@@ -1,17 +1,23 @@
-const EventEmitter = require('events');
-//uppercase convention to show that it's a class
-  
+const http = require('http');
 
-const Logger = require('./logger');
-const logger = new Logger()
+// server we're creating is an event emitter
+const server = http.createServer((req, res) => {
+    if(req.url === '/') {
+        res.write('hello world');
+        res.end();
+    }
 
-//register a listener
-//first is a message, second is a callback function
-// addEventListener === on
-logger.on('messageLogged', (arg) => {
-    //with arg technique, can pass data about event that just happened
-    console.log('listener called', arg);
+    if (req.url === '/api/courses') {
+        res.write(JSON.stringify([1,2,3]));
+        res.end();
+    }
+});
+
+server.on('connection', (socket) => {
+    console.log('new connection!');
+    
 })
 
-logger.log('message');
+server.listen(3000)
 
+console.log('listening on port 3000...');
