@@ -29,3 +29,6 @@
 * npm i jshint --save-dev
   * add flag to specify that this is a  development dependency
   * tells node that this should not go into a PROD environment
+
+## uninstalling a package
+* `npm un name-of-package`
