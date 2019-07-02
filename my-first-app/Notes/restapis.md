@@ -33,5 +33,6 @@
    *  PUT
       *  to update a costumer
       *  need id
+      *  AND need the costumer object with updated propss
    *  DELETE
       *  here only need id
