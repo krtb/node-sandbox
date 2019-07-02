@@ -12,3 +12,14 @@
 * `npm list`
 * `npm list --depth=0`
   * to see only dependencies of your app
+* `npm view name-of-package`
+  * to list properties of a package
+* `npm view name-of-package dependencies`
+* `npm view name-of-package versions`
+  * usefule to downgrade or upgrade   
+* `npm i name-of-package@2.4.0`
+
+## dealing with oudated packages
+* `npm outdated`
+  * `npm update` only works for minor and patch releases
+* `npm-check-updates`
