@@ -24,6 +24,7 @@
   * `npm update` only works for minor and patch releases
 * `npm-check-updates`
   * `ncu` command
+  * `ncu -g` to check globally installed packages
 
 ## jshint
 * npm i jshint --save-dev
@@ -32,3 +33,12 @@
 
 ## uninstalling a package
 * `npm un name-of-package`
+
+## outdated packages
+* `npm -g outdated`
+* `sudo npm i -g npm`
+  * tp update npm
+
+
+## updating an npm package
+* `npm version major/minor/patch`
