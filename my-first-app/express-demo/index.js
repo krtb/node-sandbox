@@ -14,7 +14,7 @@ app.get('/api/courses', (req, res) => {
     //specify route and callback func, or route handler
 });
 
-app.get('/api/courses/:year/:month', (req, res)=>{
+app.get('/api/courses/:id', (req, res)=>{
     res.send(req.query)
 })
 
