@@ -14,7 +14,11 @@ app.get('/api/courses', (req, res) => {
     //specify route and callback func, or route handler
 });
 
+// host port number is dynamically assigned by the hosting environment. Can't rely on a static number
+//PORT
+//should attempt to read value of port, if a value, use that
+const port = process.env.PORT || 3000;
 app.listen(3000, ()=>{
-    console.log('on port 3000...');
+    console.log(`listening on port ${port}...`);
     
 })
