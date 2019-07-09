@@ -1,3 +1,5 @@
+const Joi = require('joi')
+// what is returend from the above module is a class, use Pascal Naming Convention to name our classes
 const express = require('express'); //returns a function, that we will call express
 const app = express(); // returns an object of type, express. By convention call this `app`
 //express gives the applicatoin a skeleton, some structure
@@ -35,12 +37,31 @@ app.get('/api/courses/:id', (req, res)=>{
 
 //will post to collection of courses, use the plural name here
 app.post('/api/courses', (req, res)=> {
-    const course = {
-        id: courses.length + 1,
-        name: req.body.name
+    const schema = {
+        name: Joi.string().min(3).required() 
     }
-    courses.push(course)
-    res.send(course)
+
+    //objecvt that is returned to be STORED in an constant
+    const result = Joi.validate(req.body, schema)
+    
+
+    if(result.error) {
+        //never trust input client sends, always validate 
+        //Joi makes the json reply seen by client very clear and easy to read
+        res.status(400).send(result.error.details[0].message);
+        return;
+    }
+        const course = {
+            id: courses.length + 1,
+            name: req.body.name
+        }
+        courses.push(course)
+        res.send(course)
+
+})
+
+app.put((req, res)=> {
+    
 })
 
 // host port number is dynamically assigned by the hosting environment. Can't rely on a static number
