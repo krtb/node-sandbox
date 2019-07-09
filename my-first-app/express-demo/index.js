@@ -5,12 +5,12 @@ const app = express(); // returns an object of type, express. By convention call
 //app object has methods: get, post, put, delete
 // https://expressjs.com/en/4x/api.html#app for available properties
 app.get('/', (req, res) =>{
-    res.send('Hello, World')
+    res.send('Hello, World!')
     //specify route and callback func, or route handler
 });
 
 app.get('/api/courses', (req, res) => {
-    res.send('Hello, World')
+    res.send('Hello, courses!')
     //specify route and callback func, or route handler
 });
 
