@@ -14,6 +14,10 @@ app.get('/api/courses', (req, res) => {
     //specify route and callback func, or route handler
 });
 
+app.get('/api/courses/:year/:month', (req, res)=>{
+    res.send(req.query)
+})
+
 // host port number is dynamically assigned by the hosting environment. Can't rely on a static number
 //PORT
 //should attempt to read value of port, if a value, use that
