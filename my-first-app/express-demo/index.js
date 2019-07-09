@@ -2,6 +2,9 @@ const express = require('express'); //returns a function, that we will call expr
 const app = express(); // returns an object of type, express. By convention call this `app`
 //express gives the applicatoin a skeleton, some structure
 
+app.use(express.json());
+//adding a pirce of middleware. Function returned and assigned to app
+
 const courses = [
     {id: 1, name: 'course1'},
     {id: 2, name: 'course2'},
@@ -27,6 +30,16 @@ app.get('/api/courses/:id', (req, res)=>{
         //by convention, should return a 404 status code
         res.status(404).send(`The course with the given ID was not found`)
     }
+    res.send(course)
+})
+
+//will post to collection of courses, use the plural name here
+app.post('/api/courses', (req, res)=> {
+    const course = {
+        id: courses.length + 1,
+        name: req.body.name
+    }
+    courses.push(course)
     res.send(course)
 })
 
