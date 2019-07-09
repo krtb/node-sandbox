@@ -2,6 +2,12 @@ const express = require('express'); //returns a function, that we will call expr
 const app = express(); // returns an object of type, express. By convention call this `app`
 //express gives the applicatoin a skeleton, some structure
 
+const courses = [
+    {id: 1, name: 'course1'},
+    {id: 2, name: 'course2'},
+    {id: 3, name: 'course3'},
+];
+
 //app object has methods: get, post, put, delete
 // https://expressjs.com/en/4x/api.html#app for available properties
 app.get('/', (req, res) =>{
