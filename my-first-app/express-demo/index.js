@@ -37,31 +37,42 @@ app.get('/api/courses/:id', (req, res)=>{
 
 //will post to collection of courses, use the plural name here
 app.post('/api/courses', (req, res)=> {
-    const schema = {
-        name: Joi.string().min(3).required() 
-    }
-
-    //objecvt that is returned to be STORED in an constant
-    const result = Joi.validate(req.body, schema)
-    
-
-    if(result.error) {
-        //never trust input client sends, always validate 
-        //Joi makes the json reply seen by client very clear and easy to read
-        res.status(400).send(result.error.details[0].message);
+    const { error } = validateCourse(req.body)
+    // if RESULT is invalid, return invalid
+    if (error) {
+        res.status(400).send(error.details[0].message);
         return;
     }
-        const course = {
-            id: courses.length + 1,
-            name: req.body.name
-        }
-        courses.push(course)
-        res.send(course)
+
+    const course = {
+        id: courses.length + 1,
+        name: req.body.name
+    }
+    courses.push(course)
+    res.send(course)
 
 })
 
-app.put((req, res)=> {
-    
+app.put( '/api/courses/:id' ,(req, res)=> {
+    const course = courses.find((c) => c.id === parseInt(req.params.id))
+    if (!course) {
+        //by convention, should return a 404 status code
+        res.status(404).send(`The course with the given ID was not found`)
+    }
+
+    //const result = validateCourse(req.body) destructuring:
+    const { error } = validateCourse(req.body)
+
+    // if RESULT is invalid, return invalid
+    if (error) {
+        res.status(400).send( error.details[0].message);
+        return;
+    }
+
+    //UPDATE course
+    course.name = req.body.name; 
+    //return course to the use
+    res.send(course)
 })
 
 // host port number is dynamically assigned by the hosting environment. Can't rely on a static number
@@ -71,4 +82,28 @@ const port = process.env.PORT || 3000;
 app.listen(3000, ()=>{
     console.log(`listening on port ${port}...`);
     
+})
+
+function validateCourse(course) {
+    //VALIDATE
+    const schema = {
+        //a string with minimum 3 characters is required
+        name: Joi.string().min(3).required()
+    }
+
+    //can return result
+    return Joi.validate(course, schema) 
+}
+
+app.delete('api/courses/:id', (req, res) =>{
+    //look up the course
+    //not existing, return 404
+
+    //Delete: to do this, need to find object in our array
+    const index = courses.indexOf(course)
+    // go to this index, and remove that object
+    courses.splice(index, 1)
+
+    //Return the same course, by convention
+
 })
