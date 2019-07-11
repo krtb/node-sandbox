@@ -84,6 +84,7 @@ app.listen(3000, ()=>{
     
 })
 
+//VALIDATES IF THERE IS A COURSE
 function validateCourse(course) {
     //VALIDATE
     const schema = {
@@ -95,6 +96,7 @@ function validateCourse(course) {
     return Joi.validate(course, schema) 
 }
 
+//#DELETE ROUTE
 app.delete('api/courses/:id', (req, res) =>{
     //look up the course
     //not existing, return 404
