@@ -97,15 +97,15 @@ function validateCourse(course) {
 }
 
 //#DELETE ROUTE
-app.delete('api/courses/:id', (req, res) =>{
-    //look up the course
-    //not existing, return 404
+app.delete('/api/courses/:id', (req, res) =>{
+    const course = courses.find((c) => c.id === parseInt(req.params.id));
 
-    //Delete: to do this, need to find object in our array
-    const index = courses.indexOf(course)
-    // go to this index, and remove that object
-    courses.splice(index, 1)
+    if (!course) {
+        res.status(404).send(`The course with the given ID was not found`);
+    }
 
-    //Return the same course, by convention
+    const index = courses.indexOf(course);
+    courses.splice(index, 1);
 
+    res.send(course);
 })
