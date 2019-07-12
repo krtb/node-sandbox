@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 const express = require('express');
 const app = express()
 
@@ -9,3 +9,7 @@ const genres = [
     {id: 2, name: "Comedy"},
     {id: 3, name: "Action"},
 ]
+
+app.get('/app/genres', (req, res)=>{
+    return genres
+})
