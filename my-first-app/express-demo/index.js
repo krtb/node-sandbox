@@ -57,7 +57,9 @@ app.put( '/api/courses/:id' ,(req, res)=> {
     const course = courses.find((c) => c.id === parseInt(req.params.id))
     if (!course) {
         //by convention, should return a 404 status code
-        res.status(404).send(`The course with the given ID was not found`)
+        res.status(404).send(`The course with the given ID was not found`);
+        return;
+        //need to exit the function or else the rest is executed
     }
 
     //const result = validateCourse(req.body) destructuring:
