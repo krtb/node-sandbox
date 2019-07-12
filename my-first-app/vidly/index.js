@@ -11,5 +11,5 @@ const genres = [
 ]
 
 app.get('/app/genres', (req, res)=>{
-    return genres
+    res.send(genres)
 })
