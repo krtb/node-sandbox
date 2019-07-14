@@ -79,6 +79,10 @@ app.put('/api/genres/:id', (req,res)=>{
 //DELETE
 app.delete('/api/genres/:id', (req, res) => {
     const genre = genres.find((g) => g.id === parseInt(req.params.id));
-    //VALIDATE that that course exists
+    //VALIDATE that that genre exists
     if (!genre) return res.state(404).send("That genre ID could not be found.");
+    //FIND OBJECT IN ARRAY THAT MATCHES GENRE ID
+    const index = genres.indexOf(genre)
+    //REMOVE OBJECT FROM ARRAY
+    genres.splice(index, 1)
 })
