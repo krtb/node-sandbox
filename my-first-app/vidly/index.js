@@ -85,4 +85,5 @@ app.delete('/api/genres/:id', (req, res) => {
     const index = genres.indexOf(genre)
     //REMOVE OBJECT FROM ARRAY
     genres.splice(index, 1)
+    res.send(genres)
 })
