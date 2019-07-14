@@ -5,9 +5,7 @@ const app = express();
 app.use(express.json());
 
 const port = process.env.PORT || 3000;
-app.listen(3000, () => {
-    console.log(`listening on port ${port}...`);
-})
+app.listen(3000, () => console.log(`listening on port ${port}...`));
 
 
 const genres = [
@@ -70,7 +68,7 @@ app.put('/api/genres/:id', (req,res)=>{
 app.delete('/api/genres/:id', (req, res) => {
     const genre = genres.find((g) => g.id === parseInt(req.params.id));
     //VALIDATE that that genre exists
-    if (!genre) return res.state(404).send("That genre ID could not be found.");
+    if (!genre) return res.status(404).send("That genre ID could not be found.");
     //FIND OBJECT IN ARRAY THAT MATCHES GENRE ID
     const index = genres.indexOf(genre)
     //REMOVE OBJECT FROM ARRAY
