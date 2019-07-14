@@ -22,17 +22,18 @@ function validateGenre(genre) {
     return Joi.validate(genre, schema)
 }
 
+// root of app, check if functioning
 app.get('/', (req, res) => {
     res.send('Hello, World!')
     //specify route and callback func, or route handler
 });
 
-//GET all genres
+//GET all genres: don't need id or other data
 app.get('/api/genres', (req,res) => {
     res.send(genres)
 })
 
-//GET a single genre
+//GET a single genre: find by id
 app.get('/api/genres/:id', (req, res) => {
     // console.log(req.params); === { id: 1}       
     const genre = genres.find((g)=> g.id === parseInt(req.params.id) );
