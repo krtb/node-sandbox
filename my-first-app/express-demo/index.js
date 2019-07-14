@@ -3,14 +3,14 @@ const Joi = require('joi')
 const express = require('express'); //returns a function, that we will call express
 const app = express(); // returns an object of type, express. By convention call this `app`
 //express gives the applicatoin a skeleton, some structure
+const logger = require('./logger');
 
 app.use(express.json());
 //adding a pirce of middleware. Function returned and assigned to app
 
+app.use(logger)
 app.use(function (req, res, next) {
-    console.log('...Logging');
-    //call next to pass control to the next middleware function
-    //if not, because not terminating the req/res cycle, request would end up hanging
+    console.log('...Authenticate');
     next()
 });
 
