@@ -60,3 +60,18 @@ app.post('/api/genres/', (req, res) => {
     genres.push(genre)
     res.send(genres)
 })
+
+//UPDATE/PUT a post genre: need the id and the info you're changing
+// EXPRESS, (req.params): contains the properties of the objext we gave it
+app.put('/api/genres/:id', (req,res)=>{
+    const genre = genres.find((g)=> g.id === parseInt(req.params.id) );
+    const { error } = validateGenre(req.body)
+    //IF GENRE DOESN'T EXIST
+    if (!genre) return res.status(404).send("That genre ID could not be found.");
+    //IF REQUEST IS INVALID
+    if (error) return res.status(404).send(error.details[0].message);
+    //UPDATE/EDIT THE GENRE NAME
+    genre.name = req.body.name
+    //send back to user, singular & updated genre
+    res.send(genre)
+});
