@@ -7,7 +7,8 @@ const logger = require('./logger');
 const auth = require('./auth');
 
 app.use(express.json());
-//adding a pirce of middleware. Function returned and assigned to app
+//parses body of the req, if json object, will populate (req.body) prop
+
 
 app.use(logger)
 app.use(auth);
