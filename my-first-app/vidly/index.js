@@ -75,3 +75,10 @@ app.put('/api/genres/:id', (req,res)=>{
     //send back to user, singular & updated genre
     res.send(genre)
 });
+
+//DELETE
+app.delete('/api/genres/:id', (req, res) => {
+    const genre = genres.find((g) => g.id === parseInt(req.params.id));
+    //VALIDATE that that course exists
+    if (!genre) return res.state(404).send("That genre ID could not be found.");
+})
