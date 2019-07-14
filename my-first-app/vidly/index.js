@@ -40,10 +40,22 @@ app.get('/api/genres/:id', (req, res) => {
     res.send(genre);
 })
 
-//CREATE/POST a new genre
-app.post('/api/genres/:id', (req, res) => {
+//CREATE/POST a new genre: no id, only what you're creating
+app.post('/api/genres/', (req, res) => {
     //by default this would be `undefined`, unless using body parsing middleware    
-    // const { error } = validateGenre(req.body);
-    console.log(req.body, 'HERE IS THE BODY');
+    const { error } = validateGenre(req.body);    
+
+    if(error) {        
+        res.status(404).send(error.details[0].message);
+        return;
+    }
+
+    //create a genre object to pushh to our array. With (req.body.name)
+    const genre = {
+        id: genres.length + 1,
+        name: req.body.name
+    }
     
+    genres.push(genre)
+    res.send(genres)
 })
