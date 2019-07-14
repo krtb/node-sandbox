@@ -4,15 +4,13 @@ const express = require('express'); //returns a function, that we will call expr
 const app = express(); // returns an object of type, express. By convention call this `app`
 //express gives the applicatoin a skeleton, some structure
 const logger = require('./logger');
+const auth = require('./auth');
 
 app.use(express.json());
 //adding a pirce of middleware. Function returned and assigned to app
 
 app.use(logger)
-app.use(function (req, res, next) {
-    console.log('...Authenticate');
-    next()
-});
+app.use(auth);
 
 const courses = [
     {id: 1, name: 'course1'},
