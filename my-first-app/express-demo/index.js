@@ -7,6 +7,13 @@ const app = express(); // returns an object of type, express. By convention call
 app.use(express.json());
 //adding a pirce of middleware. Function returned and assigned to app
 
+app.use(function (req, res, next) {
+    console.log('...Logging');
+    //call next to pass control to the next middleware function
+    //if not, because not terminating the req/res cycle, request would end up hanging
+    next()
+});
+
 const courses = [
     {id: 1, name: 'course1'},
     {id: 2, name: 'course2'},
