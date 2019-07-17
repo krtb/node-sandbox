@@ -11,3 +11,11 @@
       * return environment for this node application
         * if not set, would return undefined
         * can be set from development, production, etc.
+* Other way
+  * app.get()
+    * app object
+    * use to get variou settings from this app
+    * app.get('env')
+      * if this env vatriable is not set, would return 'development' by default
+      * `NODE_ENV: undefined
+app: development`

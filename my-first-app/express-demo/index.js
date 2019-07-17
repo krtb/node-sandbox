@@ -8,6 +8,9 @@ const auth = require('./auth');
 const helmet = require('helmet') // this gives us a function
 const morgan = require('morgan')
 
+console.log( `NODE_ENV: ${process.env.NODE_ENV}`);
+console.log(`app: ${app.get('env')}`)
+
 app.use(express.json());
 //parses body of the req, if json object, will populate (req.body) prop
 
