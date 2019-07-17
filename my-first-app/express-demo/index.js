@@ -9,7 +9,7 @@ const auth = require('./auth');
 app.use(express.json());
 //parses body of the req, if json object, will populate (req.body) prop
 
-app.use(express.urlencoded()) //pareses incoming requests with url encoded payloads
+app.use(express.urlencoded({extended: true})) //pareses incoming requests with url encoded payloads
 //key=value&key=value
 
 app.use(logger)
