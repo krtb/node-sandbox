@@ -1,5 +1,4 @@
-const startupDebugger = require('debug')('app:startup') 
-const dbDebugger = require('debug')('app:db') //returns a debugging function 
+const debug = require('debug')('app:startup') 
 const config = require('config');
 const Joi = require('joi')
 // what is returend from the above module is a class, use Pascal Naming Convention to name our classes
@@ -23,11 +22,8 @@ app.use(helmet()) // this returns a middleware function
 
 if(app.get('env') === 'development'){
     app.use(morgan('tiny'))
-    startupDebugger('Morgan enabled')
+    debug('Morgan enabled')
 }
-
-//db work
-dbDebugger('connected to the database...')
 
 const courses = [
     {id: 1, name: 'course1'},
