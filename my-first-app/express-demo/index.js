@@ -11,6 +11,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({extended: true})) //pareses incoming requests with url encoded payloads
 //key=value&key=value
+// by setting extended to true, can pass arrays and complex objects, using the url encoded format
 
 app.use(logger)
 app.use(auth);
