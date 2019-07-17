@@ -10,6 +10,9 @@ const auth = require('./auth');
 const helmet = require('helmet') // this gives us a function
 const morgan = require('morgan')
 
+//need to set the view engine for the application
+app.set('view engine', 'pug') // express will load this module, don't have to require it
+app.set('views', './views') // only if you want to overide path to templates. Default value, don't have to set this
 
 app.use(express.json());
 //parses body of the req, if json object, will populate (req.body) prop
@@ -34,8 +37,8 @@ const courses = [
 //app object has methods: get, post, put, delete
 // https://expressjs.com/en/4x/api.html#app for available properties
 app.get('/', (req, res) =>{
-    res.send('Hello, World!')
     //specify route and callback func, or route handler
+    res.render('index', {title: "My express app", message: "Hello!"})
 });
 
 app.get('/api/courses', (req, res) => {
