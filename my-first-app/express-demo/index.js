@@ -24,6 +24,7 @@ app.use(auth);
 
 console.log('Application Name: ' + config.get('name'));
 console.log('Mail Server: ' + config.get('mail.host')); // use dot notation
+console.log('Mail Password: ' + config.get('mail.password')); // use dot notation
 
 
 if(app.get('env') === 'development'){
