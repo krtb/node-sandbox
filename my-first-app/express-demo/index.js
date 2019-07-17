@@ -8,8 +8,6 @@ const auth = require('./auth');
 const helmet = require('helmet') // this gives us a function
 const morgan = require('morgan')
 
-console.log( `NODE_ENV: ${process.env.NODE_ENV}`);
-console.log(`app: ${app.get('env')}`)
 
 app.use(express.json());
 //parses body of the req, if json object, will populate (req.body) prop
@@ -20,9 +18,13 @@ app.use(express.urlencoded({extended: true})) //pareses incoming requests with u
 app.use(express.static('public')) // with this middleware can serve static content, static content server at root of site
 app.use(helmet()) // this returns a middleware function
 app.use(morgan('tiny')) //can specify variouse formats
-
 app.use(logger)
 app.use(auth);
+
+if(app.get('env') === 'development'){
+    app.use(morgan('tiny'))
+    console.log('Morgan has been enabled...'); 
+}
 
 const courses = [
     {id: 1, name: 'course1'},
