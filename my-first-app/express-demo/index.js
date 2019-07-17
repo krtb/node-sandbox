@@ -32,18 +32,6 @@ if(app.get('env') === 'development'){
     debug('Morgan enabled')
 }
 
-//VALIDATES IF THERE IS A COURSE
-function validateCourse(course) {
-    //VALIDATE
-    const schema = {
-        //a string with minimum 3 characters is required
-        name: Joi.string().min(3).required()
-    }
-
-    //can return result
-    return Joi.validate(course, schema)
-}
-
 // host port number is dynamically assigned by the hosting environment. Can't rely on a static number
 //PORT
 //should attempt to read value of port, if a value, use that
