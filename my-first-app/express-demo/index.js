@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true})) //pareses incoming requests with url encoded payloads
 //key=value&key=value
 // by setting extended to true, can pass arrays and complex objects, using the url encoded format
+app.use(express.static('public')) // with this middleware can serve static content, static content server at root of site
 
 app.use(logger)
 app.use(auth);
