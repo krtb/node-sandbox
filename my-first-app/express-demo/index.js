@@ -1,3 +1,4 @@
+const config = require('config');
 const Joi = require('joi')
 // what is returend from the above module is a class, use Pascal Naming Convention to name our classes
 const express = require('express'); //returns a function, that we will call express
@@ -20,6 +21,10 @@ app.use(helmet()) // this returns a middleware function
 app.use(morgan('tiny')) //can specify variouse formats
 app.use(logger)
 app.use(auth);
+
+console.log('Application Name: ' + config.get('name'));
+console.log('Mail Server: ' + config.get('mail.host')); // use dot notation
+
 
 if(app.get('env') === 'development'){
     app.use(morgan('tiny'))
