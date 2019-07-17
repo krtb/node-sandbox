@@ -5,6 +5,7 @@ const app = express(); // returns an object of type, express. By convention call
 //express gives the applicatoin a skeleton, some structure
 const logger = require('./logger');
 const auth = require('./auth');
+const helmet = require('helmet') // this gives us a function
 
 app.use(express.json());
 //parses body of the req, if json object, will populate (req.body) prop
@@ -13,6 +14,7 @@ app.use(express.urlencoded({extended: true})) //pareses incoming requests with u
 //key=value&key=value
 // by setting extended to true, can pass arrays and complex objects, using the url encoded format
 app.use(express.static('public')) // with this middleware can serve static content, static content server at root of site
+app.use(express.helmet()) // this returns a middleware function
 
 app.use(logger)
 app.use(auth);
