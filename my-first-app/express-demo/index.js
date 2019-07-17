@@ -1,3 +1,5 @@
+const startupDebugger = require('debug')('app:startup') 
+const dbDebugger = require('debug')('app:db') //returns a debugging function 
 const config = require('config');
 const Joi = require('joi')
 // what is returend from the above module is a class, use Pascal Naming Convention to name our classes
@@ -18,19 +20,14 @@ app.use(express.urlencoded({extended: true})) //pareses incoming requests with u
 // by setting extended to true, can pass arrays and complex objects, using the url encoded format
 app.use(express.static('public')) // with this middleware can serve static content, static content server at root of site
 app.use(helmet()) // this returns a middleware function
-app.use(morgan('tiny')) //can specify variouse formats
-app.use(logger)
-app.use(auth);
-
-console.log('Application Name: ' + config.get('name'));
-console.log('Mail Server: ' + config.get('mail.host')); // use dot notation
-console.log('Mail Password: ' + config.get('mail.password')); // use dot notation
-
 
 if(app.get('env') === 'development'){
     app.use(morgan('tiny'))
-    console.log('Morgan has been enabled...'); 
+    startupDebugger('Morgan enabled')
 }
+
+//db work
+dbDebugger('connected to the database...')
 
 const courses = [
     {id: 1, name: 'course1'},
