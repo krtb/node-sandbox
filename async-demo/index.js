@@ -1,24 +1,25 @@
 console.log('BEFORE');
 
-const user = getUser(1)
+//when result of synchronous func ready, this func will be called with the result
+getUser(1, function(user) {
+    // console.log('User', user);
+    getRepos(user.gitHubUserName, (repos)=>{
+        console.log(repos);
+    })
+})
 
-console.log(user)
 console.log('AFTER');
 
-//TODO: 3 patterns for dealing with async code
-// Callbacks
-// Promises
-// Async/Await
-
-function getUser(id) {
-    //in this func, need to return a user object
+function getUser(id, callback) {
     setTimeout(() => {
-        console.log('Reaing a user from a database....')
-        return {
-            id: id,
-            gitHubUserName: "krtb"
-        }
+        console.log('Reading a user from a database....')
+        callback({id: id,gitHubUserName: "krtb"})
     }, 2000)
+}
 
-    return 1
+function getRepos(username, callback) {
+    setTimeout(()=>{
+        console.log('Grabbing Repos....')
+        callback(['repo1', 'repo2', 'repo3'])
+    }, 2000)
 }
