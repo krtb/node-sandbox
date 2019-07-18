@@ -1,24 +1,20 @@
 console.log('BEFORE');
 
-//when result of synchronous func ready, this func will be called with the result
-getUser(1, function(user) {
-    // console.log('User', user);
-    getRepos(user.gitHubUserName, (repos)=>{
-        console.log(repos);
-        getCommits(repo, (commits)=>{
-
-        })
-    })
-})
-
-//TODO: synchronus method
-console.log('Before');
-const user = getUser(1);
-const repos = getRepos(user.gitHubUserName);
-const commits = getCommits(repos[0]);
-
+getUser(1, getRepos)
 
 console.log('AFTER');
+
+function getRepos(user) {
+    getRepos(user.gitHubUserName, getCommits)
+}
+
+function getCommits(repos) {
+    getCommits(repo, displayCommits) //not calling func, but a reference to it
+}
+
+function displayCommits(commits) {
+    console.log(commits);
+}
 
 function getUser(id, callback) {
     setTimeout(() => {
