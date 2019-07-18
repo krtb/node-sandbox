@@ -5,8 +5,18 @@ getUser(1, function(user) {
     // console.log('User', user);
     getRepos(user.gitHubUserName, (repos)=>{
         console.log(repos);
+        getCommits(repo, (commits)=>{
+
+        })
     })
 })
+
+//TODO: synchronus method
+console.log('Before');
+const user = getUser(1);
+const repos = getRepos(user.gitHubUserName);
+const commits = getCommits(repos[0]);
+
 
 console.log('AFTER');
 
