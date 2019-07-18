@@ -1,6 +1,6 @@
 console.log('BEFORE');
 
-getUser(1, getRepos)
+getUser(1, getReposgit)
 
 console.log('AFTER');
 
