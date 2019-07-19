@@ -4,7 +4,7 @@
 const p1 = new Promise((resolve, reject) => {
     setTimeout(()=>{
         console.log('Async operation 1...');
-        reject(1)
+        resolve(1)
     }, 2000)
 })
 
