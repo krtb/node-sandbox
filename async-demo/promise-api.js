@@ -26,3 +26,4 @@ Promise.all([p1,p2])
 
 // still don't have concurrency, a single thread is kicking off both ALMOST at the same time
 // both async operations are started almost at the same time
+// if any of our promises are rejected, final promise will be considered rejected
