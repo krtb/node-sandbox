@@ -1,6 +1,7 @@
 console.log('BEFORE');
 
-getUser(1, getReposgit)
+getUser(1).then(user => getRepos(user.gitHubUserName)).then(repos => getCommits(repos[0])).then(commits => console.log('Commits', commits) )
+.catch(err => console.logI('Error', err.message)) 
 
 console.log('AFTER');
 
