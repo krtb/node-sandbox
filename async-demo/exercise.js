@@ -11,17 +11,19 @@
 //     }
 // });
 
-async function getCustomer() {
-    try{
-        const customer = await getCustomer(1);
-        console.log('Customer: ', customer);
-        const movies = await getTopMovies(customer);
+async function informCustomer() {
+
+    const customer = await getCustomer(1);
+    console.log('Customer: ', customer);
+
+    if(customer.isGold){
+        const movies = await getTopMovies();
         console.log('Top movies: ', movies);
-        const sendEmail = await sendEmail();
-    } catch(err) {
-        console.log('Error', err.message)
+        await sendEmail(customer.email, movies);
+        console.log('email sent...')
     }
 }
+informCustomer()
 
 function getCustomer(id) {
     //func that has two args, RESOLVE/REJECT, is called: EXECUTOR
@@ -42,7 +44,7 @@ function getTopMovies() {
         setTimeout(() => {
             resolve(['movie1', 'movie2']);
         }, 4000);
-    })
+    });
 }
 
 function sendEmail(email, movies) {
