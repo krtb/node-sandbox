@@ -14,6 +14,7 @@
 async function getCustomer() {
     try{
         const customer = await getCustomer(1);
+        console.log('Customer: ', customer);
         const movies = await getTopMovies(customer);
         const sendEmail = await sendEmail();
     } catch(err) {
@@ -46,6 +47,7 @@ function getTopMovies() {
 function sendEmail(email, movies) {
     return new Promise((resolve,reject) => {
     setTimeout(() => {
+        //below, void func that doesn't return a value
         resolve();
     }, 4000);
     })
