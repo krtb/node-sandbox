@@ -16,6 +16,7 @@ async function getCustomer() {
         const customer = await getCustomer(1);
         console.log('Customer: ', customer);
         const movies = await getTopMovies(customer);
+        console.log('Top movies: ', movies);
         const sendEmail = await sendEmail();
     } catch(err) {
         console.log('Error', err.message)
