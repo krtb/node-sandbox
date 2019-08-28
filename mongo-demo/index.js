@@ -11,7 +11,7 @@ const courseSchema = new mongoose.Schema({
     name: String,
     author: String,
     tags: [ String ],
-    date: {type: Date, default: Date.now},
+    date: {type: Date, default: Date.now}, //defined with a default value
     isPublished: Boolean
 });
 
@@ -22,4 +22,11 @@ const courseSchema = new mongoose.Schema({
 //second arg is schem that defines shape of documents in this collection
 //pascal naming convention, uppercase means this is a class, not an object.
 //camel case naming for our objects
-const Course = mongoose.model('Course', courseSchema);
+const Course = mongoose.model('Course', courseSchema); //compiled into model, to get a Class
+
+const course = new Course({
+    name: 'Node.js Course',
+    author: 'Mosh',
+    tags: ['node', 'backend'],  // can have complex objects, not possible in relational DBs
+    isPublished: true
+}); 
