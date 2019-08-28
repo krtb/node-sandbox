@@ -15,3 +15,11 @@ const courseSchema = new mongoose.Schema({
     isPublished: Boolean
 });
 
+//Need to compile the above Schema information into a model
+//Classes, Objects
+//Class = blueprint, Object is an instance of that blueprint
+
+//second arg is schem that defines shape of documents in this collection
+//pascal naming convention, uppercase means this is a class, not an object.
+//camel case naming for our objects
+const Course = mongoose.model('Course', courseSchema);
