@@ -24,9 +24,18 @@ const courseSchema = new mongoose.Schema({
 //camel case naming for our objects
 const Course = mongoose.model('Course', courseSchema); //compiled into model, to get a Class
 
-const course = new Course({
-    name: 'Node.js Course',
-    author: 'Mosh',
-    tags: ['node', 'backend'],  // can have complex objects, not possible in relational DBs
-    isPublished: true
-}); 
+async function creatCourse(){
+    const course = new Course({
+        name: 'Angular Course',
+        author: 'Mosh',
+        tags: ['angular', 'frontend'],  // can have complex objects, not possible in relational DBs
+        isPublished: true
+    });
+
+    //mongo will assign a unique identifier
+    //when using await, code needs to be inside an async function
+    const result = await course.save() //dealing with an async operation, need time to save in DB, result will be ready in the future, will return promise
+    console.log(result)
+}
+
+creatCourse();
