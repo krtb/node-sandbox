@@ -39,6 +39,15 @@ async function creatCourse(){
 }
 
 async function getCourses(){
+    //eq = equal to
+    //ne = not equal
+    //gt = greater than
+    //gte = greater than or equal to
+    //lt = les than
+    //lte = less than or equal to
+    //in
+    //nin = not in
+
     //course class has methods that are available to it, like find
     const courses = await Course
     //sorting by 1 is descending order, ascending order would be with -1
