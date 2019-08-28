@@ -38,4 +38,15 @@ async function creatCourse(){
     console.log(result)
 }
 
-creatCourse();
+async function getCourses(){
+    //course class has methods that are available to it, like find
+    const courses = await Course
+    //sorting by 1 is descending order, ascending order would be with -1
+        .find({  author: 'Mosh', isPublished: true })
+        .limit(10)
+        .sort({ name: 1 })
+        .select({ name: 1, tags: 1 })
+    console.log(courses)
+}
+
+getCourses();
