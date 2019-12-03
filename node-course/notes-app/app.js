@@ -2,4 +2,4 @@
 const fs = require('fs')
 
 // using writeFile and writeFileSync methods. Takes in 2 args, file and data to write to file
-fs.writeFileSync('notes.txt', 'This file was created by Node.js')
+fs.appendFileSync('notes.txt', ' and this was appended by me')
